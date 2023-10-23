@@ -39,14 +39,15 @@ public class Party {
     private boolean isPublic;
 
     @Column
-    private URL backgroundImage;
+    private String backgroundImageURL;
 
     @Column
-    private URL icon;
+    private String iconURL;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn
-    @Column Theme theme;
+    @Column
+    private Theme themeid;
 
     public Party() {}
 }
