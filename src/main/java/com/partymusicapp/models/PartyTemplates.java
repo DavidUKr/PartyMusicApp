@@ -21,11 +21,9 @@ public class PartyTemplates {
     @Column
     private String mode;
 
-    @NonNull
     @Column
     private int maxUsers;
 
-    @NonNull
     @Column
     private boolean isPublic;
 
