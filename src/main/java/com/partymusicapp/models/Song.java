@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.net.URL;
-
 @Entity
 @Data
 @Table(name = "songs")
@@ -31,7 +29,7 @@ public class Song {
     private String author;
 
     @Column
-    private URL source;
+    private String source;
 
     @Column
     private int votes;
