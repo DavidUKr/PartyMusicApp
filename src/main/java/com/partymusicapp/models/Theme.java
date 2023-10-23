@@ -12,9 +12,11 @@ import lombok.NonNull;
 @Table(name = "themes")
 public class Theme {
     @Id
-    private Long id;
+    private String id;
 
     @NonNull
     @Column
     private String name;
+
+    public Theme() {}
 }
