@@ -1,13 +1,8 @@
 package com.partymusicapp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "users")
@@ -15,13 +10,38 @@ import org.springframework.stereotype.Component;
 public class User {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
 
     @NonNull
     @Column
-    private String name;
+    private String username;
 
+    @NonNull
+    @Column
+    private String email;
 
+    @NonNull
+    @Column
+    private String password;
+
+    @Column
+    private String birthDate;
+
+    @Column
+    private int rating;
+
+    @Column
+    private int noOfSuggestedSongs;
+
+    @Column
+    private int noOfPlayedSongs;
+
+    @Column
+    private int noOfJoinedParties;
+
+    @Column
+    private int noOfHostedParties;
 
     public User() {}
 }

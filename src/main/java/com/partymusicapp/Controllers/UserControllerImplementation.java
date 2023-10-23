@@ -3,7 +3,6 @@ package com.partymusicapp.Controllers;
 import com.partymusicapp.models.User;
 import com.partymusicapp.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
