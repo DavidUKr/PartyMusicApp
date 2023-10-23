@@ -18,7 +18,7 @@ public class Party {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private User ownerID;
+    private User ownerId;
 
     @NonNull
     @Column
