@@ -3,8 +3,6 @@ package com.partymusicapp.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
-
-import java.net.URL;
 import java.time.ZonedDateTime;
 
 @Entity
