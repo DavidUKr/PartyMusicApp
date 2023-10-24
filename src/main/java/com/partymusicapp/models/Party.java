@@ -3,8 +3,6 @@ package com.partymusicapp.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
-
-import java.net.URL;
 import java.time.ZonedDateTime;
 
 @Entity
@@ -39,14 +37,15 @@ public class Party {
     private boolean isPublic;
 
     @Column
-    private URL backgroundImage;
+    private String backgroundImageURL;
 
     @Column
-    private URL icon;
+    private String iconURL;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn
-    @Column Theme theme;
+    @Column
+    private Theme themeid;
 
     public Party() {}
 }
