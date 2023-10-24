@@ -12,16 +12,19 @@ public interface UserController {
     @PutMapping(value = "/register")
     void registerUser(User user);
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    UserDTO getUser(@PathVariable String id);
+    @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    UserDTO getUser(@PathVariable String userId);
 
-    @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void updateUser(@PathVariable String id, @RequestBody UserDTO userDTO);
+    @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    void updateUser(@PathVariable String userId, @RequestBody UserDTO userDTO);
 
-    @DeleteMapping(value = "/{id}")
-    void unregisterUser(@PathVariable String id);
+    @DeleteMapping(value = "/{userId}")
+    void unregisterUser(@PathVariable String userId);
 
-    @PostMapping(value = "/{id}/grant")
-    void grantRoleToUser(@PathVariable String id);
+    @PostMapping(value = "/{userId}/grant")
+    void grantRoleToUser(@PathVariable String userId);
+
+    @PostMapping(value = "/{userId}/rating")
+    void updateRating(@PathVariable String userId, @RequestPart int amount);
 
 }
