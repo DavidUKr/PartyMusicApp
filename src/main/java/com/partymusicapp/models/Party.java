@@ -42,10 +42,9 @@ public class Party {
     @Column
     private String iconURL;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
-    @Column
-    private Theme themeid;
+    private Theme themeId;
 
     public Party() {}
 }
