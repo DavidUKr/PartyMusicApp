@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     void registerUser(User user);
 
-    UserDTO getUser(String userId);
+    UserDTO getUserDTO(String userId);
+    User getUser(String userId);
 
     void updateUser(String userId, UserDTO userDTO);
 
@@ -16,5 +17,5 @@ public interface UserService {
 
     void grantRoleToUser(String userId);
 
-    void updateRating(String userId, int amount);
+    void updateRating(String userId, int addedAmmount);
 }

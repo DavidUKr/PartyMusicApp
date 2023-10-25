@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public interface UserController {
 
     @PutMapping(value = "/register")
-    void registerUser(User user);
+    void registerUser(@RequestBody User user);
 
     @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     UserDTO getUser(@PathVariable String userId);
@@ -25,6 +25,6 @@ public interface UserController {
     void grantRoleToUser(@PathVariable String userId);
 
     @PostMapping(value = "/{userId}/rating")
-    void updateRating(@PathVariable String userId, @RequestPart int amount);
+    void updateRating(@PathVariable String userId, @RequestParam int addedAmount);
 
 }

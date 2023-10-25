@@ -15,32 +15,32 @@ public class UserControllerImpl implements UserController{
     UserService userService;
 //TODO add OPENAPI documentation
     @PutMapping(value = "/register")
-    public void registerUser(User user) {
+    public void registerUser(@RequestBody User user) {
         userService.registerUser(user);
     }
 
     @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserDTO getUser(String userId) {
-        return userService.getUser(userId);
+    public UserDTO getUser(@PathVariable String userId) {
+        return userService.getUserDTO(userId);
     }
 
     @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateUser(String userId, UserDTO userDTO) {
+    public void updateUser(@PathVariable String userId, UserDTO userDTO) {
         userService.updateUser(userId, userDTO);
     }
 
     @DeleteMapping(value = "/{userId}")
-    public void unregisterUser(String userId) {
+    public void unregisterUser(@PathVariable String userId) {
         userService.unregisterUser(userId);
     }
 
     @PostMapping(value = "/{userId}/grant")
-    public void grantRoleToUser(String userId) {
+    public void grantRoleToUser(@PathVariable String userId) {
         userService.grantRoleToUser(userId);
     }
 
     @PostMapping(value = "/{userId}/rating")
-    public void updateRating(String userId, int amount) {
-        userService.updateRating(userId, amount);
+    public void updateRating(@PathVariable String userId, @RequestParam int addedAmount) {
+        userService.updateRating(userId, addedAmount);
     }
 }
