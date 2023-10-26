@@ -11,10 +11,10 @@ import lombok.NonNull;
 public class PartyTemplates {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String tid;
+    private String partyTemplatesId;
 
     @OneToOne
-    @JoinColumn(name = "User_ID")
+    @JoinColumn
     private User uid;
 
     @NonNull

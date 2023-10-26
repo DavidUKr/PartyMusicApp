@@ -1,9 +1,6 @@
 package com.partymusicapp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -12,6 +9,7 @@ import lombok.NonNull;
 @Table(name = "themes")
 public class Theme {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @NonNull

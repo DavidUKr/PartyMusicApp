@@ -12,12 +12,12 @@ public class Follow {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    @OneToOne
-    @JoinColumn(name = "follower_id")
+    @ManyToMany
+    @JoinColumn
     private Follow followerID;
 
-    @ManyToOne
-    @JoinColumn(name = "followed ID")
+    @ManyToMany
+    @JoinColumn
     private Follow followedID;
 
     public Follow(){}
