@@ -25,7 +25,7 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public User getUser(String userId) {
-        return getUserFromUserRepoById(userId).orElseThrow(()->new UserNotFoundException("User with Id"+userId+"not found"));
+        return getUserFromUserRepoById(userId).orElseThrow(()->new UserNotFoundException("User with Id "+userId+"not found"));
     }
 
     @Override
