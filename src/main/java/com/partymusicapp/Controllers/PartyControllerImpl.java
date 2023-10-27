@@ -29,7 +29,7 @@ public class PartyControllerImpl {
         partyService.savePartyTemplate(userId, partyDTO);
     }
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     void getInfo(@PathVariable String partyID){
         partyService.getInfo(partyID);
     }

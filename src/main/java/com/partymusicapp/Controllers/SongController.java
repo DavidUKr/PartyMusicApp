@@ -19,7 +19,7 @@ public interface SongController {
     @DeleteMapping(value = "/{songID}")
     void RemoveSong(@PathVariable String partyID);
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     void voteSong(@PathVariable String partyID);
 
 }
