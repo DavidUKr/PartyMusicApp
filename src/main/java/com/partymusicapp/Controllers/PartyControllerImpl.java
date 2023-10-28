@@ -11,7 +11,7 @@ public class PartyControllerImpl {
 
     @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     PartyDTO getParty(@PathVariable String partyId){
-        return partyService.getParty(partyId);
+        return partyService.getPartyDTO(partyId);
     }
 
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)

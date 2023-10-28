@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 public interface PartyService {
 
-    PartyDTO getParty(String partyId);
+    PartyDTO getPartyDTO(String partyId);
 
     void updateParty(String partyId);
 
