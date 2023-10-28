@@ -16,4 +16,10 @@ public interface SongController {
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Song> getSongList(@PathVariable String partyId);
 
+    @DeleteMapping(value = "/{songID}")
+    void RemoveSong(@PathVariable String partyID);
+
+    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    void voteSong(@PathVariable String partyID);
+
 }
