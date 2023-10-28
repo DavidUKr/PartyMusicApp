@@ -3,6 +3,7 @@ package com.partymusicapp.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +25,10 @@ public class User {
     @NonNull
     @Column
     private String password;
+
+    @NonNull
+    @Column
+    private SimpleGrantedAuthority role;
 
     @Column
     private String birthDate;
