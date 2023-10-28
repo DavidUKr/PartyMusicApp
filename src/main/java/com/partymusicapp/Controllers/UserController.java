@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "pma/api/v1/users")
 public interface UserController {
 
-    @PutMapping(value = "/register")
+    @PutMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     void registerUser(@RequestBody User user);
 
     @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)

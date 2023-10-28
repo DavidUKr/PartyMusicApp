@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "pma/api/v1/auth")
-public interface AuthenticationController {
+public class AuthenticationControllerImpl implements AuthenticationController{
 
     @GetMapping(value = "/test_connection")
-    String checkConnection ();
+    public String checkConnection() {
+        return "Working connection and credentials! Great!";
+    }
 }
