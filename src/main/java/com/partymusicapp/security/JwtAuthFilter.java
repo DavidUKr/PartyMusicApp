@@ -1,4 +1,4 @@
-package com.partymusicapp.config;
+package com.partymusicapp.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

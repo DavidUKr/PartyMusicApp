@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NonNull;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -13,6 +15,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+
+    @JoinColumn
+    @OneToOne
+    private Party hostedPartyId;
 
     @NonNull
     @Column
@@ -25,10 +31,6 @@ public class User {
     @NonNull
     @Column
     private String password;
-
-    @NonNull
-    @Column
-    private SimpleGrantedAuthority role;
 
     @Column
     private String birthDate;
@@ -47,6 +49,21 @@ public class User {
 
     @Column
     private int noOfHostedParties;
+
+    @Column
+    private boolean isEnabled;
+
+    @Column
+    private boolean isAccountNonExpired;
+
+    @Column
+    private boolean isCredentialsNonExpired;
+
+    @Column
+    private boolean isAccountNonLocked;
+
+    @Column
+    private String role;
 
     public User() {}
 }

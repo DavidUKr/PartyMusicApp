@@ -1,6 +1,5 @@
-package com.partymusicapp.config;
+package com.partymusicapp.security;
 
-import com.partymusicapp.repository.UserRepo;
 import com.partymusicapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
