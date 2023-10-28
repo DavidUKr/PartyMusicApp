@@ -14,8 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PartyServiceImpl implements PartyService{
 
-    PartyRepo partyRepo;
-    PartyMapper partyMapper;
+    private final PartyRepo partyRepo;
+    private final PartyMapper partyMapper;
 
     public Party getParty(String partyId){
         return getPartyOptionalById(partyId).orElseThrow(() -> new PartyNotFoundException("Party with Id "+partyId+" not found."));

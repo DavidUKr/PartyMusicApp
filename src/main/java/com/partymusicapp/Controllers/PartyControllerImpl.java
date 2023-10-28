@@ -2,12 +2,16 @@ package com.partymusicapp.Controllers;
 
 import com.partymusicapp.models.dto.PartyDTO;
 import com.partymusicapp.service.PartyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping(value = "pma/api/v1/parties")
+@RequiredArgsConstructor
 public class PartyControllerImpl {
 
-    PartyService partyService;
+    private final PartyService partyService;
 
     @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     PartyDTO getParty(@PathVariable String partyId){

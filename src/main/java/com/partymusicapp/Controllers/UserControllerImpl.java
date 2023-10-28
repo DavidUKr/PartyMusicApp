@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController{
 
-    UserService userService;
+    private final UserService userService;
 //TODO add OPENAPI documentation
     @PutMapping(value = "/register")
     public void registerUser(@RequestBody User user) {
