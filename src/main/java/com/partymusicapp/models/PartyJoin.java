@@ -9,11 +9,13 @@ import lombok.Data;
 public class PartyJoin {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    String Id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Party partyId;
 
-    @Id
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private User userId;
