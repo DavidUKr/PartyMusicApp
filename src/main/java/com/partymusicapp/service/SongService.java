@@ -12,7 +12,7 @@ public interface SongService {
 
     List<Song> getSongList(String partyId);
 
-    void RemoveSong(String partyID);
+    void RemoveSong(String partyId, String songId);
 
-    void voteSong(String partyID);
+    void voteSong(String partyID, String songId);
 }

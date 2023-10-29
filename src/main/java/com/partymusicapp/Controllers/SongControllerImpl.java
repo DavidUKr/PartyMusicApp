@@ -21,12 +21,12 @@ public class SongControllerImpl {
     }
 
     @DeleteMapping(value = "/{songID}")
-    void RemoveSong(@PathVariable String partyID){
-        songService.RemoveSong(partyID);
+    void RemoveSong(@PathVariable String partyID, String songID){
+        songService.RemoveSong(partyID, songID);
     }
 
     @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
-    void voteSong(@PathVariable String partyID){
-        songService.voteSong(partyID);
+    void voteSong(@PathVariable String partyID, String songID){
+        songService.voteSong(partyID, songID);
     }
 }

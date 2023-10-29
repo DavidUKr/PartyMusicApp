@@ -42,7 +42,8 @@ public class PartyServiceImpl implements PartyService{
 
     @Override
     public void savePartyTemplate(String userId, PartyDTO partyDTO) {
-        savePartyTemplate(userId, partyDTO);
+        Party party = partyMapper.partyDTOToParty(partyDTO);
+        partyRepo.save(party);
     }
 
     private Optional<Party> getPartyOptionalById(String partyId) {
