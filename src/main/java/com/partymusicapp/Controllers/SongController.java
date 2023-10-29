@@ -11,7 +11,7 @@ import java.util.List;
 public interface SongController {
 
     @PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void addSong (@PathVariable String partyId, @RequestBody Song song);
+    Song addSong (@PathVariable String partyId, @RequestBody Song song);
 
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Song> getSongList(@PathVariable String partyId);

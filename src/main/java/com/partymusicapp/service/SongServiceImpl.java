@@ -10,8 +10,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SongServiceImpl implements SongService{
     @Override
-    public void addSong(String partyId, Song song) {
-
+    public Song addSong(String partyId, Song song) {
+        return null; //TODO implement use of the YouTube v3 API to get Song Info
     }
 
     @Override
