@@ -37,12 +37,12 @@ public class PartyServiceImpl implements PartyService{
 
     @Override
     public void deleteParty(String partyId) {
-
+        partyRepo.delete(partyRepo.findPartyById(partyId));
     }
 
     @Override
     public void savePartyTemplate(String userId, PartyDTO partyDTO) {
-
+        savePartyTemplate(userId, partyDTO);
     }
 
     private Optional<Party> getPartyOptionalById(String partyId) {
