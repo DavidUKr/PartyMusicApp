@@ -32,6 +32,7 @@ public class PartyServiceImpl implements PartyService{
     @Override
     public void updateParty(String partyId, PartyDTO partyDTO) {
         Party party = partyUtil.getUpdatedPartyBasedOnDTO(getParty(partyId), partyDTO);
+        partyRepo.save(party);
     }
 
     @Override
