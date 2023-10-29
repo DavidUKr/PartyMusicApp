@@ -11,8 +11,8 @@ public class SongControllerImpl {
     SongService songService;
 
     @PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void addSong (@PathVariable String partyId, @RequestBody Song song){
-        songService.addSong(partyId, song);
+    Song addSong (@PathVariable String partyId, @RequestBody Song song){
+        return songService.addSong(partyId, song);
     }
 
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
