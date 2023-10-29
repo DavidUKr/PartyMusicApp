@@ -36,7 +36,5 @@ public class SongServiceImpl implements SongService{
 //         if (songToVote != null) {
 //             songToVote.incrementVotes(); // Implement a method to update the votes.
 //             songRepo.save(songToVote);
-
-        return null;
     }
 }
