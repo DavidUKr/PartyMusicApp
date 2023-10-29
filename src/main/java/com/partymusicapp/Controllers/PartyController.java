@@ -23,6 +23,4 @@ public interface PartyController {
     @PutMapping(value = "/save/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     void savePartyTemplate(@PathVariable String userId, @RequestBody PartyDTO partyDTO);
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
-    void getInfo(@PathVariable String partyID);
 }

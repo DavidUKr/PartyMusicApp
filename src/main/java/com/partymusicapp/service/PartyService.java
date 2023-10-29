@@ -10,11 +10,10 @@ public interface PartyService {
 
     PartyDTO getPartyDTO(String partyId);
 
-    void updateParty(String partyId);
+    void updateParty(String partyId, PartyDTO partyDTO);
 
     void deleteParty(String partyId);
 
     void savePartyTemplate(String userId, PartyDTO partyDTO);
 
-    void getInfo(String partyID);
 }

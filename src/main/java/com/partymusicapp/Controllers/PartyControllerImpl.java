@@ -15,8 +15,8 @@ public class PartyControllerImpl {
     }
 
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void updateParty(@PathVariable String partyId){
-        partyService.updateParty(partyId);
+    void updateParty(@PathVariable String partyId, PartyDTO partyDTO){
+        partyService.updateParty(partyId, partyDTO);
     }
 
     @DeleteMapping(value = "/{partyId}")
@@ -27,10 +27,5 @@ public class PartyControllerImpl {
     @PutMapping(value = "/save/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     void savePartyTemplate(@PathVariable String userId, @RequestBody PartyDTO partyDTO){
         partyService.savePartyTemplate(userId, partyDTO);
-    }
-
-    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    void getInfo(@PathVariable String partyID){
-        partyService.getInfo(partyID);
     }
 }
