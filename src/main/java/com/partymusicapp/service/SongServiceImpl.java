@@ -17,9 +17,7 @@ public class SongServiceImpl implements SongService{
 
     @Override
     public List<Song> getSongList(String partyId) {
-        List<Song> songList = songRepo.findByPartyId(partyId);
-
-        return songList;
+        return songRepo.findByPartyId(partyId);
     }
 
     @Override
