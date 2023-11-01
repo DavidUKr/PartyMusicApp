@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "pma/api/v1/auth")
+@RequestMapping(value = "/pma/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthenticationControllerImpl implements AuthenticationController{
 

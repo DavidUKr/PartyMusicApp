@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "pma/api/v1/auth")
+@RequestMapping(value = "/pma/api/v1/auth")
 public interface AuthenticationController {
 
     @GetMapping(value = "/test_connection")

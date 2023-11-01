@@ -12,7 +12,7 @@ import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "pma/api/v1/users")
+@RequestMapping(value = "/pma/api/v1/users")
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController{
 
