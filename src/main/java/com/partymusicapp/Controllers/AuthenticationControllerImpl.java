@@ -1,16 +1,14 @@
 package com.partymusicapp.Controllers;
 
-import com.partymusicapp.security.IdBasedUserDetailsService;
-import com.partymusicapp.security.JwtUtil;
+import com.partymusicapp.security.service.IdBasedUserDetailsService;
+import com.partymusicapp.security.util.JwtUtil;
 import com.partymusicapp.security.model.AuthenticationRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

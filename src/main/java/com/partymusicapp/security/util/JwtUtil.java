@@ -1,4 +1,4 @@
-package com.partymusicapp.security;
+package com.partymusicapp.security.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

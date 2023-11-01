@@ -1,4 +1,4 @@
-package com.partymusicapp.security;
+package com.partymusicapp.security.service;
 
 import com.partymusicapp.advice.exception.UserNotFoundException;
 import com.partymusicapp.models.User;
