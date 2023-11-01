@@ -3,8 +3,12 @@ package com.partymusicapp.Controllers;
 import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import com.partymusicapp.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +18,12 @@ public class UserControllerImpl implements UserController{
 
     private final UserService userService;
 //TODO add OPENAPI documentation
+
+    @Operation(summary = "This endpoint adds Users")
+    @Parameters(value = {
+            @Parameter(name = "UserDTO", description = "body that contains the data that characterizes a User, containing only basic info",
+                    example = "\"username\":\"JohnTheBear\", \"email\":\"IoanFlaviusUrs@gmail.com\", \"password\":\"12345678\", \"birthDate\":\"12\\12\\2020\" ")
+    })
     @PutMapping(value = "/register")
     public void registerUser(@RequestBody User user) {
         userService.registerUser(user);
