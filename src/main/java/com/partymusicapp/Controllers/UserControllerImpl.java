@@ -19,16 +19,6 @@ public class UserControllerImpl implements UserController{
     private final UserService userService;
 //TODO add OPENAPI documentation
 
-    @Operation(summary = "This endpoint adds Users")
-    @Parameters(value = {
-            @Parameter(name = "UserDTO", description = "body that contains the data that characterizes a User, containing only basic info",
-                    example = "\"username\":\"JohnTheBear\", \"email\":\"IoanFlaviusUrs@gmail.com\", \"password\":\"12345678\", \"birthDate\":\"12\\12\\2020\" ")
-    })
-    @PutMapping(value = "/register")
-    public void registerUser(@RequestBody User user) {
-        userService.registerUser(user);
-    }
-
     @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO getUser(@PathVariable String userId) {
         return userService.getUserDTO(userId);

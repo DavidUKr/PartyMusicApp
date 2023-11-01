@@ -19,13 +19,15 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+
+
+@Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@Configuration
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-    private final UserService userService;
+    private final AuthenticationProvider authenticationProvider;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -34,33 +36,18 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers(
-                            "/api/v*/auth/**",
-                            "/register*").permitAll();
+                            "/api/v*/auth/**").permitAll();
                     request.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                        .invalidSessionUrl("/invalidSessionUrl"))
-                .authenticationProvider(getAuthenticationProvider())
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        )
+                .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-    private static AuthenticationProvider getAuthenticationProvider() {
-        final DaoAuthenticationProvider authenticationProvider= new DaoAuthenticationProvider();
-        authenticationProvider.setPasswordEncoder(getPasswordEncoder());
-        return authenticationProvider;
-    }
 
-    @Bean
-    public static AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-    @Bean
-    public static PasswordEncoder getPasswordEncoder() {
-        //return new BCryptPasswordEncoder(); //TODO implement pw encoding
-        return NoOpPasswordEncoder.getInstance();
-    }
 
 }

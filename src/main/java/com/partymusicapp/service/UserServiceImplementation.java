@@ -18,10 +18,6 @@ public class UserServiceImplementation implements UserService{
     private final UserRepo userRepo;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
-    @Override
-    public void registerUser(User user) {
-        userRepo.save(user);
-    }
 
     @Override
     public User getUser(String userId) {
