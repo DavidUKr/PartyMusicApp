@@ -1,16 +1,21 @@
 package com.partymusicapp.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
-public class User {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,19 +56,31 @@ public class User {
     private int noOfHostedParties;
 
     @Column
-    private boolean isEnabled;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @Column
-    private boolean isAccountNonExpired;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
 
-    @Column
-    private boolean isCredentialsNonExpired;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-    @Column
-    private boolean isAccountNonLocked;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-    @Column
-    private String role;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-    public User() {}
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

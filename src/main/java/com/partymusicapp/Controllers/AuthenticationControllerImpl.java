@@ -1,6 +1,6 @@
 package com.partymusicapp.Controllers;
 
-import com.partymusicapp.security.util.JwtUtil;
+import com.partymusicapp.security.service.JwtService;
 import com.partymusicapp.security.model.AuthenticationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -21,7 +21,7 @@ public class AuthenticationControllerImpl implements AuthenticationController{
 
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtUtil;
 
     @GetMapping(value = "/test_connection")
     public String checkConnection() {
