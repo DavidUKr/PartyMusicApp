@@ -3,21 +3,21 @@ package com.partymusicapp.Controllers;
 import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import com.partymusicapp.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "pma/api/v1/users")
+@RequestMapping(value = "/pma/api/v1/users")
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController{
 
-    UserService userService;
+    private final UserService userService;
 //TODO add OPENAPI documentation
-    @PutMapping(value = "/register")
-    public void registerUser(@RequestBody User user) {
-        userService.registerUser(user);
-    }
 
     @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO getUser(@PathVariable String userId) {

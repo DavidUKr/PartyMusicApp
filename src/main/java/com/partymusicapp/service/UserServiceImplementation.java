@@ -15,13 +15,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceImplementation implements UserService{
 
-    UserRepo userRepo;
-    UserMapper userMapper;
-    UserUtil userUtil;
-    @Override
-    public void registerUser(User user) {
-        userRepo.save(user);
-    }
+    private final UserRepo userRepo;
+    private final UserMapper userMapper;
+    private final UserUtil userUtil;
 
     @Override
     public User getUser(String userId) {

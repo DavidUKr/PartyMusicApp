@@ -9,14 +9,14 @@ import lombok.Data;
 public class Follow {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn
     private Follow followerID;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn
     private Follow followedID;
 
