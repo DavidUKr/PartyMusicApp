@@ -8,6 +8,8 @@ import java.util.List;
 @Service
 public interface SongService {
 
+    List<Song> search(String searchInput);
+
     Song addSong(String partyId, Song song);
 
     List<Song> getSongList(String partyId);
