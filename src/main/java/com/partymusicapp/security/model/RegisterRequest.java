@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
-
+public class RegisterRequest {
     private String username;
+    private String email;
     private String password;
+    //TODO add birthDate implementation
 }

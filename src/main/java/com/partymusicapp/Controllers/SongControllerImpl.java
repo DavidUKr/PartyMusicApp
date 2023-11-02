@@ -8,7 +8,7 @@ import com.partymusicapp.service.SongService;
 import java.util.List;
 
 @RestController
-@RequestMapping("pma/api/v1/songs")
+@RequestMapping("/pma/api/v1/songs")
 @RequiredArgsConstructor
 public class SongControllerImpl {
 
