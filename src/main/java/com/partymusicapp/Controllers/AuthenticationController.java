@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public interface AuthenticationController {
 
     @GetMapping(value = "/test_connection")
-    String checkConnection ();
+    ResponseEntity<String> checkConnection ();
 
     @PostMapping(value = "/register")
     ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest);

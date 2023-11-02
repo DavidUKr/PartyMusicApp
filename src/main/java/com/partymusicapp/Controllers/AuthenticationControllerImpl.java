@@ -3,15 +3,9 @@ package com.partymusicapp.Controllers;
 import com.partymusicapp.security.model.AuthenticationResponse;
 import com.partymusicapp.security.model.RegisterRequest;
 import com.partymusicapp.security.service.AuthenticationService;
-import com.partymusicapp.security.service.JwtService;
 import com.partymusicapp.security.model.AuthenticationRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,8 +16,8 @@ public class AuthenticationControllerImpl implements AuthenticationController{
     private final AuthenticationService authenticationService;
 
     @GetMapping(value = "/test_connection")
-    public String checkConnection() {
-        return "Working connection and credentials! Great!";
+    public ResponseEntity<String> checkConnection() {
+        return ResponseEntity.ok("Working connection and credentials! Great!");
     }
 
 
