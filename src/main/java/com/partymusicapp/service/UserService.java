@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    void registerUser(User user);
 
     UserDTO getUserDTO(String userId);
     User getUser(String userId);

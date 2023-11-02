@@ -3,6 +3,8 @@ package com.partymusicapp.models.mapper;
 import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

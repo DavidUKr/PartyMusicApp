@@ -9,7 +9,7 @@ import lombok.Data;
 public class PartyJoin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     String Id;
 
     @ManyToOne(fetch = FetchType.LAZY)

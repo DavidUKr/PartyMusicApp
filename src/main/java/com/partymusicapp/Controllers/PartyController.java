@@ -5,7 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "pma/api/v1/parties")
+@RequestMapping(value = "/pma/api/v1/parties")
 public interface PartyController {
 
     @PutMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -23,6 +23,4 @@ public interface PartyController {
     @PutMapping(value = "/save/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     void savePartyTemplate(@PathVariable String userId, @RequestBody PartyDTO partyDTO);
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
-    void getInfo(@PathVariable String partyID);
 }
