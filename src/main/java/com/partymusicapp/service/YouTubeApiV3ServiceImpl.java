@@ -1,15 +1,17 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.advice.exception.YTNotRespondingException;
 import com.partymusicapp.advice.exception.YoutubeSearchListEmptyException;
 import com.partymusicapp.models.Song;
 import com.partymusicapp.models.mapper.SongMapper;
 import com.partymusicapp.models.youtube.YouTubeSearchResponse;
-import io.swagger.v3.core.util.Json;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.ErrorResponseException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.HttpURLConnection;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,8 +27,12 @@ public class YouTubeApiV3ServiceImpl implements YouTubeApiV3Service{
 
         String parameters="?part=snippet&q="+searchInput+ "&key=" + KEY;
 
-        YouTubeSearchResponse youTubeSearchResponse=getYouTubeSearchResponse(parameters, "search");
-
+        YouTubeSearchResponse youTubeSearchResponse;
+        try {
+            youTubeSearchResponse = getYouTubeSearchResponse(parameters, "search");
+        }catch(ErrorResponseException e){
+            throw new YTNotRespondingException("Something Happened");
+        }
         return songMapper.youTubeSearchResponseToSongs(youTubeSearchResponse);
     }
 
@@ -44,12 +50,17 @@ public class YouTubeApiV3ServiceImpl implements YouTubeApiV3Service{
         return null;
     }
 
-    private YouTubeSearchResponse getYouTubeSearchResponse(String parameters, String controller){
+    private YouTubeSearchResponse getYouTubeSearchResponse(String parameters, String controller) throws ErrorResponseException{
         RestTemplate restTemplate=new RestTemplate();
 
         HttpEntity<String> requestEntity = getStringHttpEntity(parameters);
 
         ResponseEntity<YouTubeSearchResponse> response=restTemplate.exchange("youtube.googleapis.com/youtube/v3/"+controller, HttpMethod.GET, requestEntity, YouTubeSearchResponse.class);
+
+        if(!response.getStatusCode().equals(HttpURLConnection.HTTP_OK))
+        {
+            throw new ErrorResponseException(HttpStatus.NO_CONTENT);
+        }
 
         return response.getBody();
     }
