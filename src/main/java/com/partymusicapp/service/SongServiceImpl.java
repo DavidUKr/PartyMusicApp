@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.Song;
 import com.partymusicapp.repository.SongRepo;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class SongServiceImpl implements SongService{
     }
 
     @Override
-    public void RemoveSong(String partyId, String songId) {
+    public void RemoveSong(Party partyId, String songId) {
         Song songToRemove = songRepo.findSongByIdAndPartyId(songId, partyId);
          if (songToRemove != null) {
              songRepo.delete(songToRemove);

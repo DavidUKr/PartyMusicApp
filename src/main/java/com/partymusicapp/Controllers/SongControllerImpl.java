@@ -1,5 +1,6 @@
 package com.partymusicapp.Controllers;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.Song;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class SongControllerImpl {
     }
 
     @DeleteMapping(value = "/{songID}")
-    void RemoveSong(@PathVariable String partyID, String songID){
+    void RemoveSong(@PathVariable Party partyID, String songID){
         songService.RemoveSong(partyID, songID);
     }
 
