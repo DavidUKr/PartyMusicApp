@@ -14,7 +14,7 @@ public interface SongController {
     List<Song> search(@PathVariable String search_input);
 
     @PutMapping(value = "/{partyId}/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Song addSong (@PathVariable String partyId, @RequestBody Song song);
+    Song addSong (@PathVariable String partyId, @RequestBody Song song, @RequestParam String userId);
 
     @GetMapping(value = "/{partyId}/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Song> getSongList(@PathVariable String partyId);

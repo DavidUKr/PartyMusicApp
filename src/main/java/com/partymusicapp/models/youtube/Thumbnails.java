@@ -1,12 +1,16 @@
 package com.partymusicapp.models.youtube;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 @Data
+@RequiredArgsConstructor
 public class Thumbnails {
-    private Map<String, YouTubeVideo.ThumbnailDetails> defaultThumbnail;
-    private Map<String, YouTubeVideo.ThumbnailDetails> medium;
-    private Map<String, YouTubeVideo.ThumbnailDetails> high;
+    private final Map<String, ThumbnailDetails> defaultThumbnail;
+    private final Map<String, ThumbnailDetails> medium;
+    private final Map<String, ThumbnailDetails> high;
 }

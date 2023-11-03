@@ -10,7 +10,7 @@ public interface SongService {
 
     List<Song> search(String searchInput);
 
-    Song addSong(String partyId, Song song);
+    Song addSong(String partyId, Song song, String userId);
 
     List<Song> getSongList(String partyId);
 
