@@ -11,9 +11,9 @@ public interface SongService {
 
     Song addSong(String partyId, Song song);
 
-    List<Song> getSongList(String partyId);
+    List<Song> getSongList(Party partyId);
 
     void RemoveSong(Party partyId, String songId);
 
-    void voteSong(String partyID, String songId);
+    void voteSong(Party partyID, String songId);
 }

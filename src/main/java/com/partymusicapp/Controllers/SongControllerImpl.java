@@ -17,7 +17,7 @@ public class SongControllerImpl {
     }
 
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Song> getSongList(@PathVariable String partyId){
+    List<Song> getSongList(@PathVariable Party partyId){
         return songService.getSongList(partyId);
     }
 
@@ -27,7 +27,7 @@ public class SongControllerImpl {
     }
 
     @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
-    void voteSong(@PathVariable String partyID, String songID){
+    void voteSong(@PathVariable Party partyID, String songID){
         songService.voteSong(partyID, songID);
     }
 }

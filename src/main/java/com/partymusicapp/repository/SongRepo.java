@@ -11,6 +11,6 @@ import java.util.List;
 public interface SongRepo extends JpaRepository<Song, String> {
     Song findSongByIdAndPartyId(String songId, Party partyId);
 
-    List<Song> findByPartyId(String partyId);
+    List<Song> findByPartyId(Party partyId);
 
 }

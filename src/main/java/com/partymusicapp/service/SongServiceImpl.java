@@ -17,7 +17,7 @@ public class SongServiceImpl implements SongService{
     }
 
     @Override
-    public List<Song> getSongList(String partyId) {
+    public List<Song> getSongList(Party partyId) {
         return songRepo.findByPartyId(partyId);
     }
 
@@ -30,7 +30,7 @@ public class SongServiceImpl implements SongService{
     }
 
     @Override
-    public void voteSong(String partyId, String songId) {
+    public void voteSong(Party partyId, String songId) {
 //        Song songToVote = songRepo.findSongByIdAndPartyId(songId, partyId);
 //         if (songToVote != null) {
 //             songToVote.incrementVotes(); // Implement a method to update the votes.
