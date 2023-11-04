@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.List;
 
-//AIzaSyB1jhfgHE0GItu4PLzYT-dy-8n5GRYZBPs key for access to Global Data
 @Service
 @RequiredArgsConstructor
 public class YouTubeApiV3ServiceImpl implements YouTubeApiV3Service{
