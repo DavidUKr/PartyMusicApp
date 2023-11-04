@@ -13,31 +13,41 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImplementation implements UserService{
+public class UserServiceImpl implements UserService{
 
     private final UserRepo userRepo;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
 
     @Override
-    public User getUser(String userId) {
-        return getUserFromUserRepoById(userId).orElseThrow(()->new UserNotFoundException("User with Id "+userId+"not found"));
+    public User getUserById(String userId) {
+        return getUserFromUserRepoById(userId).orElseThrow(()->new UserNotFoundException("User with Id "+userId+" not found"));
     }
 
     @Override
-    public UserDTO getUserDTO(String userId) throws UserNotFoundException{
-        return userMapper.userToUserDTO(getUser(userId));
+    public User getUserByUsername(String username) {
+        return getUserFromUserRepoByUsername(username).orElseThrow(()->new UserNotFoundException("User with username "+username+" not found"));
+    }
+
+    @Override
+    public UserDTO getUserDTOById(String userId) throws UserNotFoundException{
+        return userMapper.userToUserDTO(getUserById(userId));
+    }
+
+    @Override
+    public UserDTO getUserDTOByUsername(String username) {
+        return userMapper.userToUserDTO(getUserByUsername(username));
     }
 
     @Override
     public void updateUser(String userId, UserDTO userDTO) {
-        User user=userUtil.getUpdatedUserBasedOnDTO(getUser(userId), userDTO);
+        User user=userUtil.getUpdatedUserBasedOnDTO(getUserById(userId), userDTO);
         userRepo.save(user);
     }
 
     @Override
     public void unregisterUser(String userId) {
-        userRepo.delete(userRepo.findUserById(userId));
+        userRepo.delete(getUserById(userId));
     }
 
     @Override
@@ -48,11 +58,15 @@ public class UserServiceImplementation implements UserService{
     @Override
     public void updateRating(String userId, int addedAmount) {
         UserDTO userDTO=new UserDTO();
-        userDTO.setRating(getUser(userId).getRating()+addedAmount);
+        userDTO.setRating(getUserById(userId).getRating()+addedAmount);
         updateUser(userId, userDTO);
     }
 
     private Optional<User> getUserFromUserRepoById(String userId) throws UserNotFoundException{
-        return Optional.ofNullable(userRepo.findUserById(userId));
+        return userRepo.findUserById(userId);
+    }
+
+    private Optional<User> getUserFromUserRepoByUsername(String username) {
+        return userRepo.findUserByUsername(username);
     }
 }

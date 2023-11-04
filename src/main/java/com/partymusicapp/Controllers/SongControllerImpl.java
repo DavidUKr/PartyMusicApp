@@ -10,13 +10,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/pma/api/v1/songs")
 @RequiredArgsConstructor
-public class SongControllerImpl {
+public class SongControllerImpl{
 
     private final SongService songService;
 
+    @GetMapping(value = "/search/{search_input}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Song> search(@PathVariable String search_input){
+        return songService.search(search_input);
+    }
+
     @PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Song addSong (@PathVariable String partyId, @RequestBody Song song){
-        return songService.addSong(partyId, song);
+    Song addSong (@PathVariable String partyId, @RequestBody Song song, @RequestParam String userId){
+        return songService.addSong(partyId, song, userId);
     }
 
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)

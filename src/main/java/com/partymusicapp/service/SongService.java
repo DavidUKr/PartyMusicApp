@@ -8,7 +8,9 @@ import java.util.List;
 @Service
 public interface SongService {
 
-    Song addSong(String partyId, Song song);
+    List<Song> search(String searchInput);
+
+    Song addSong(String partyId, Song song, String userId);
 
     List<Song> getSongList(String partyId);
 

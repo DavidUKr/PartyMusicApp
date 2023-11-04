@@ -1,16 +1,17 @@
 package com.partymusicapp.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Entity
 @Data
 @Table(name = "songs")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Song {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -32,7 +33,8 @@ public class Song {
     private String source;
 
     @Column
-    private int votes;
+    private String thumbnail;
 
-    public Song() {}
+    @Column
+    private int votes;
 }
