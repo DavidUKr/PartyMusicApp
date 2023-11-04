@@ -6,7 +6,9 @@ import com.partymusicapp.models.Song;
 import com.partymusicapp.models.mapper.SongMapper;
 import com.partymusicapp.models.YouTubeSearchResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.ErrorResponseException;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,8 +21,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class YouTubeApiV3ServiceImpl implements YouTubeApiV3Service{
 
-    private final String KEY = "AIzaSyB1jhfgHE0GItu4PLzYT-dy-8n5GRYZBPs";
+    @Value("${google.api.key}")
+    private String KEY;
     private final SongMapper songMapper;
+
     @Override
     public List<Song> searchSong(String searchInput) {
 
