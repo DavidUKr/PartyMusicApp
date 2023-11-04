@@ -15,7 +15,7 @@ public class PartyControllerImpl {
     }
 
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void updateParty(@PathVariable String partyId, PartyDTO partyDTO){
+    void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO){
         partyService.updateParty(partyId, partyDTO);
     }
 

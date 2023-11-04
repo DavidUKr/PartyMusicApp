@@ -26,7 +26,7 @@ public class SongControllerImpl {
         songService.RemoveSong(partyID, songID);
     }
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     void voteSong(@PathVariable Party partyID, String songID){
         songService.voteSong(partyID, songID);
     }
