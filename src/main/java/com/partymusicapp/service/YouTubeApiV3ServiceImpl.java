@@ -4,7 +4,7 @@ import com.partymusicapp.advice.exception.YTNotRespondingException;
 import com.partymusicapp.advice.exception.YoutubeSearchListEmptyException;
 import com.partymusicapp.models.Song;
 import com.partymusicapp.models.mapper.SongMapper;
-import com.partymusicapp.models.youtube.YouTubeSearchResponse;
+import com.partymusicapp.models.YouTubeSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,6 @@ import org.springframework.web.ErrorResponseException;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.HttpURLConnection;
 import java.util.Collections;
 import java.util.List;
 

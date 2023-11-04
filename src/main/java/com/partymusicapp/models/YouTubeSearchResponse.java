@@ -1,4 +1,4 @@
-package com.partymusicapp.models.youtube;
+package com.partymusicapp.models;
 
 import lombok.*;
 
