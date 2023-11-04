@@ -19,14 +19,15 @@ public class SongMapperImpl implements SongMapper{
 
         List<Song> songs=new ArrayList<Song>();
 
-        for(Item item : youTubeSearchResponse.getItems()){
-            songs.add(Song.builder()
-                    .id(item.getId())
-                    .title(item.getSnippet().getTitle())
-                    .author(item.getSnippet().getChannelId())
-                    .source(getSourceFromVideoAndChanelId(item.getId(), item.getSnippet().getChannelId()))
-                    .thumbnail(item.getSnippet().getThumbnails().getMedium().toString())
-                    .build());
+        for(YouTubeSearchResponse.Item item : youTubeSearchResponse.getItems()){
+            if(item.getId().getKind().equals("youtube#video"))
+                songs.add(Song.builder()
+                        .id(item.getId().getVideoId())
+                        .title(item.getSnippet().getTitle())
+                        .author(item.getSnippet().getChannelTitle())
+                        .source(getSourceFromVideoAndChanelId(item.getId().getVideoId(), item.getSnippet().getChannelId()))
+                        .thumbnail(item.getSnippet().getThumbnails().getMedium().toString())
+                        .build());
         }
 
         return songs;

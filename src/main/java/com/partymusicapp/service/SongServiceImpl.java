@@ -1,9 +1,7 @@
 package com.partymusicapp.service;
 
 import com.partymusicapp.models.Song;
-import com.partymusicapp.repository.PartyRepo;
 import com.partymusicapp.repository.SongRepo;
-import com.partymusicapp.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +24,7 @@ public class SongServiceImpl implements SongService{
 
     @Override
     public Song addSong(String partyId, Song song, String userId) {
-        song.setSuggesterId(userService.getUser(userId));
+        song.setSuggesterId(userService.getUserById(userId));
         song.setPartyId(partyService.getParty(partyId));
         song.setVotes(0);
 

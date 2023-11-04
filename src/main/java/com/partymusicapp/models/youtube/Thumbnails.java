@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Component
+
 @Data
 @RequiredArgsConstructor
 public class Thumbnails {

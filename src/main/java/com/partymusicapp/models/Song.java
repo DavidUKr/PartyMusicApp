@@ -1,14 +1,14 @@
 package com.partymusicapp.models;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Entity
 @Data
 @Table(name = "songs")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Song {
 
     @Id
@@ -37,6 +37,4 @@ public class Song {
 
     @Column
     private int votes;
-
-    public Song() {}
 }
