@@ -19,7 +19,7 @@ public class UserAdvice {
     @ResponseBody
     @ExceptionHandler(PartyNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String userNotFoundHandler(PartyNotFoundException e){
+    String partyNotFoundHandler(PartyNotFoundException e){
         return e.getMessage();
     }
 
