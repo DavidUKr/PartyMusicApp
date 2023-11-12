@@ -2,8 +2,6 @@ package com.partymusicapp.models.mapper;
 
 import com.partymusicapp.advice.exception.YoutubeSearchListEmptyException;
 import com.partymusicapp.models.Song;
-import com.partymusicapp.models.youtube.Item;
-import com.partymusicapp.models.youtube.Thumbnails;
 import com.partymusicapp.models.YouTubeSearchResponse;
 import org.springframework.stereotype.Component;
 
