@@ -13,10 +13,10 @@ public interface UserController {
     @GetMapping(value = "/test")
     ResponseEntity<String> test();
 
-    @GetMapping(value = "/userid={userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/userid/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     UserDTO getUser(@PathVariable String userId);
 
-    @GetMapping(value = "/username={username}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     UserDTO getUserByUsername(@PathVariable String username);
 
     @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
