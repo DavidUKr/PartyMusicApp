@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    void registerUser(User user);
 
-    UserDTO getUserDTO(String userId);
-    User getUser(String userId);
+    UserDTO getUserDTOById(String userId);
+    UserDTO getUserDTOByUsername(String username);
+
+    User getUserById(String userId);
+    User getUserByUsername(String username);
 
     void updateUser(String userId, UserDTO userDTO);
 

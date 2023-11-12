@@ -9,7 +9,7 @@ import lombok.Data;
 public class Follow {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @ManyToOne

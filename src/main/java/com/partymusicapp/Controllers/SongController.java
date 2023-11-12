@@ -7,19 +7,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("pma/api/v1/songs/{partyId}")
+@RequestMapping("/pma/api/v1/songs")
 public interface SongController {
 
-    @PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Song addSong (@PathVariable String partyId, @RequestBody Song song);
+    @GetMapping(value = "/search/{search_input}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<Song> search(@PathVariable String search_input);
 
-    @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{partyId}/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    Song addSong (@PathVariable String partyId, @RequestBody Song song, @RequestParam String userId);
+
+    @GetMapping(value = "/{partyId}/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Song> getSongList(@PathVariable String partyId);
 
-    @DeleteMapping(value = "/{songID}")
-    void RemoveSong(@PathVariable String partyID);
+    @DeleteMapping(value = "/{partyId}/{songID}")
+    void RemoveSong(@PathVariable String partyID, @PathVariable String songID);
 
-    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    void voteSong(@PathVariable String partyID);
+    @GetMapping(value = "/{partyId}/{songId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    void voteSong(@PathVariable String partyID, @PathVariable String songId);
 
 }

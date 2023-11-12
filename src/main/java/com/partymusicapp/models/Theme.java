@@ -10,7 +10,7 @@ import lombok.NonNull;
 public class Theme {
   
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @NonNull

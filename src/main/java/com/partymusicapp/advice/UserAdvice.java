@@ -2,6 +2,8 @@ package com.partymusicapp.advice;
 
 import com.partymusicapp.advice.exception.PartyNotFoundException;
 import com.partymusicapp.advice.exception.UserNotFoundException;
+import com.partymusicapp.advice.exception.YTNotRespondingException;
+import com.partymusicapp.advice.exception.YoutubeSearchListEmptyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,4 +25,17 @@ public class UserAdvice {
         return e.getMessage();
     }
 
+    @ResponseBody
+    @ExceptionHandler(YoutubeSearchListEmptyException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String songListEmptyHandler(YoutubeSearchListEmptyException e){
+        return e.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(YTNotRespondingException.class)
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    String ytNotRespondingHandler(YTNotRespondingException e){
+        return e.getMessage();
+    }
 }

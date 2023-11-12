@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.dto.PartyDTO;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,8 @@ public interface PartyService {
     PartyDTO getPartyDTO(String partyId);
 
     void updateParty(String partyId, PartyDTO partyDTO);
+  
+    Party getParty(String partyId);
 
     void deleteParty(String partyId);
 
