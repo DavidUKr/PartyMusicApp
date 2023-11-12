@@ -1,13 +1,19 @@
 package com.partymusicapp.models.dto;
 
+import com.partymusicapp.models.Theme;
 import com.partymusicapp.models.User;
+import lombok.Data;
+
 import java.time.ZonedDateTime;
 
+@Data
 public class PartyDTO {
 
     private String id;
 
     private User ownerId;
+
+    private Theme themeId;
 
     private String mode;
 
@@ -19,5 +25,6 @@ public class PartyDTO {
 
     private String iconURL;
 
-    private String theme;
+
+
 }

@@ -11,7 +11,7 @@ import lombok.NonNull;
 public class PartyTemplates {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String partyTemplatesId;
+    private String id;
 
     @OneToOne
     @JoinColumn

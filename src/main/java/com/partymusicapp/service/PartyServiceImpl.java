@@ -5,6 +5,7 @@ import com.partymusicapp.models.Party;
 import com.partymusicapp.models.dto.PartyDTO;
 import com.partymusicapp.models.mapper.PartyMapper;
 import com.partymusicapp.repository.PartyRepo;
+import com.partymusicapp.util.PartyUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class PartyServiceImpl implements PartyService{
     private final PartyRepo partyRepo;
     private final PartyMapper partyMapper;
 
+    PartyUtil partyUtil;
+
     public Party getParty(String partyId){
         return getPartyOptionalById(partyId).orElseThrow(() -> new PartyNotFoundException("Party with Id "+partyId+" not found."));
     }
@@ -27,23 +30,20 @@ public class PartyServiceImpl implements PartyService{
     }
 
     @Override
-    public void updateParty(String partyId) {
-
+    public void updateParty(String partyId, PartyDTO partyDTO) {
+        Party party = partyUtil.getUpdatedPartyBasedOnDTO(getParty(partyId), partyDTO);
+        partyRepo.save(party);
     }
 
     @Override
     public void deleteParty(String partyId) {
-
+        partyRepo.delete(partyRepo.findPartyById(partyId));
     }
 
     @Override
     public void savePartyTemplate(String userId, PartyDTO partyDTO) {
-
-    }
-
-    @Override
-    public void getInfo(String partyID) {
-
+        Party party = partyMapper.partyDTOToParty(partyDTO);
+        partyRepo.save(party);
     }
 
     private Optional<Party> getPartyOptionalById(String partyId) {

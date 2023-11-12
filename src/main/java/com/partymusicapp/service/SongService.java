@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.Song;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ public interface SongService {
 
     Song addSong(String partyId, Song song, String userId);
 
-    List<Song> getSongList(String partyId);
+    List<Song> getSongList(Party partyId);
 
-    void RemoveSong(String partyID);
+    void RemoveSong(Party partyId, String songId);
 
-    void voteSong(String partyID);
+    void voteSong(Party partyID, String songId);
 }

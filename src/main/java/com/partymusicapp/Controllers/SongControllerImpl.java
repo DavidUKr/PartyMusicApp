@@ -1,5 +1,6 @@
 package com.partymusicapp.Controllers;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.Song;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -25,17 +26,17 @@ public class SongControllerImpl{
     }
 
     @GetMapping(value = "/songlist", produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Song> getSongList(@PathVariable String partyId){
+    List<Song> getSongList(@PathVariable Party partyId){
         return songService.getSongList(partyId);
     }
 
     @DeleteMapping(value = "/{songID}")
-    void RemoveSong(@PathVariable String partyID){
-        songService.RemoveSong(partyID);
+    void RemoveSong(@PathVariable Party partyID, String songID){
+        songService.RemoveSong(partyID, songID);
     }
 
-    @GetMapping(value = "/partyId", produces = MediaType.APPLICATION_JSON_VALUE)
-    void voteSong(@PathVariable String partyID){
-        songService.voteSong(partyID);
+    @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    void voteSong(@PathVariable Party partyID, String songID){
+        songService.voteSong(partyID, songID);
     }
 }

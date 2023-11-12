@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.models.Party;
 import com.partymusicapp.models.Song;
 import com.partymusicapp.repository.SongRepo;
 import lombok.RequiredArgsConstructor;
@@ -34,17 +35,23 @@ public class SongServiceImpl implements SongService{
     }
 
     @Override
-    public List<Song> getSongList(String partyId) {
-        return null;
+    public List<Song> getSongList(Party partyId) {
+        return songRepo.findByPartyId(partyId);
     }
 
     @Override
-    public void RemoveSong(String partyID) {
-
+    public void RemoveSong(Party partyId, String songId) {
+        Song songToRemove = songRepo.findSongByIdAndPartyId(songId, partyId);
+         if (songToRemove != null) {
+             songRepo.delete(songToRemove);
+         }
     }
 
     @Override
-    public void voteSong(String partyID) {
-
+    public void voteSong(Party partyId, String songId) {
+//        Song songToVote = songRepo.findSongByIdAndPartyId(songId, partyId);
+//         if (songToVote != null) {
+//             songToVote.incrementVotes(); // Implement a method to update the votes.
+//             songRepo.save(songToVote);
     }
 }
