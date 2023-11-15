@@ -2,6 +2,7 @@ package com.partymusicapp.models.dto;
 
 import com.partymusicapp.models.Theme;
 import com.partymusicapp.models.User;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
@@ -25,6 +26,6 @@ public class PartyDTO {
 
     private String iconURL;
 
-
+    private String title;
 
 }
