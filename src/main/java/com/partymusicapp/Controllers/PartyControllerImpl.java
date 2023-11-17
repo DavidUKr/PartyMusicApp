@@ -6,30 +6,42 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/pma/api/v1/parties")
 @RequiredArgsConstructor
-public class PartyControllerImpl {
+public class PartyControllerImpl implements PartyController{
 
     private final PartyService partyService;
 
+    @PutMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createParty(@RequestBody PartyDTO partyDTO) {
+        partyService.createParty(partyDTO);
+    }
+
     @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    PartyDTO getParty(@PathVariable String partyId){
+    public PartyDTO getParty(@PathVariable String partyId){
         return partyService.getPartyDTO(partyId);
     }
 
+    @Override
+    public List<PartyDTO> getAllParties() {
+        return null;
+    }
+
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO){
+    public void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO){
         partyService.updateParty(partyId, partyDTO);
     }
 
     @DeleteMapping(value = "/{partyId}")
-    void deleteParty(@PathVariable String partyId){
+    public void deleteParty(@PathVariable String partyId){
         partyService.deleteParty(partyId);
     }
 
     @PutMapping(value = "/save/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void savePartyTemplate(@PathVariable String userId, @RequestBody PartyDTO partyDTO){
+    public void savePartyTemplate(@PathVariable String userId, @RequestBody PartyDTO partyDTO){
         partyService.savePartyTemplate(userId, partyDTO);
     }
 }

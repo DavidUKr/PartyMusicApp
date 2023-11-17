@@ -4,6 +4,8 @@ import com.partymusicapp.models.dto.PartyDTO;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/pma/api/v1/parties")
 public interface PartyController {
@@ -14,8 +16,11 @@ public interface PartyController {
     @GetMapping(value = "/{partyId}", produces = MediaType.APPLICATION_JSON_VALUE)
     PartyDTO getParty(@PathVariable String partyId);
 
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<PartyDTO> getAllParties();
+
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void updateParty(@PathVariable String partyId);
+    void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO);
 
     @DeleteMapping(value = "/{partyId}")
     void deleteParty(@PathVariable String partyId);

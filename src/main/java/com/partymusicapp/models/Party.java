@@ -18,6 +18,9 @@ public class Party {
     @JoinColumn
     private User ownerId;
 
+    @Column
+    private String ownerUsername;
+
     @NonNull
     @Column
     private String mode;

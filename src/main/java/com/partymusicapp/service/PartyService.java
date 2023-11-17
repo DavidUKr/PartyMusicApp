@@ -17,4 +17,5 @@ public interface PartyService {
 
     void savePartyTemplate(String userId, PartyDTO partyDTO);
 
+    void createParty(PartyDTO partyDTO);
 }

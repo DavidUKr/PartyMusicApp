@@ -2,6 +2,8 @@ package com.partymusicapp.service;
 
 import com.partymusicapp.advice.exception.PartyNotFoundException;
 import com.partymusicapp.models.Party;
+import com.partymusicapp.models.Role;
+import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.PartyDTO;
 import com.partymusicapp.models.mapper.PartyMapper;
 import com.partymusicapp.repository.PartyRepo;
@@ -17,6 +19,7 @@ public class PartyServiceImpl implements PartyService{
 
     private final PartyRepo partyRepo;
     private final PartyMapper partyMapper;
+    private final UserService userService;
 
     PartyUtil partyUtil;
 
@@ -37,13 +40,21 @@ public class PartyServiceImpl implements PartyService{
 
     @Override
     public void deleteParty(String partyId) {
-        partyRepo.delete(partyRepo.findPartyById(partyId));
+        Party party=partyRepo.findPartyById(partyId);
+        partyRepo.delete(party);
+        userService.grantRoleToUsername(party.getOwnerUsername(), Role.USER);
     }
 
     @Override
     public void savePartyTemplate(String userId, PartyDTO partyDTO) {
         Party party = partyMapper.partyDTOToParty(partyDTO);
         partyRepo.save(party);
+    }
+
+    @Override
+    public void createParty(PartyDTO partyDTO) {
+        partyRepo.save(partyMapper.partyDTOToParty(partyDTO));
+        userService.grantRoleToUsername(partyDTO.getOwnerUsername(), Role.PARTY_OWNER);
     }
 
     private Optional<Party> getPartyOptionalById(String partyId) {

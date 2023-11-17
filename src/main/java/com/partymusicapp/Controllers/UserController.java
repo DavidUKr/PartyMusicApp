@@ -1,5 +1,6 @@
 package com.partymusicapp.Controllers;
 
+import com.partymusicapp.models.Role;
 import com.partymusicapp.models.dto.UserDTO;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public interface UserController {
     void unregisterUser(@PathVariable String userId);
 
     @PostMapping(value = "/{userId}/grant")
-    void grantRoleToUser(@PathVariable String userId);
+    void grantRoleToUserId(@PathVariable String userId, @RequestParam Role role);
 
     @PostMapping(value = "/{userId}/rating")
     void updateRating(@PathVariable String userId, @RequestParam int addedAmount);

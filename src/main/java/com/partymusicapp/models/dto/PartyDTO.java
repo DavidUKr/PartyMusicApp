@@ -13,6 +13,8 @@ public class PartyDTO {
 
     private User ownerId;
 
+    private String ownerUsername;
+
     private Theme themeId;
 
     private String mode;

@@ -1,6 +1,7 @@
 package com.partymusicapp.service;
 
 import com.partymusicapp.advice.exception.UserNotFoundException;
+import com.partymusicapp.models.Role;
 import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import com.partymusicapp.models.mapper.UserMapper;
@@ -48,13 +49,28 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void updateUser(User user) {
+        userRepo.save(user);
+    }
+
+    @Override
     public void unregisterUser(String userId) {
         userRepo.delete(getUserById(userId));
     }
 
     @Override
-    public void grantRoleToUser(String userId) {
+    public void grantRoleToUserId(String userId, Role role) {
         //TODO implement party leader/ attendee system - token stuff
+        User user=getUserById(userId);
+        user.setRole(role);
+        updateUser(user);
+    }
+
+    @Override
+    public void grantRoleToUsername(String username, Role role) {
+        User user=getUserByUsername(username);
+        user.setRole(role);
+        updateUser(user);
     }
 
     @Override

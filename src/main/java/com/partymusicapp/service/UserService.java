@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.models.Role;
 import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,13 @@ public interface UserService {
     User getUserByUsername(String username);
 
     void updateUser(String userId, UserDTO userDTO);
+    void updateUser(User user);
 
     void unregisterUser(String userId);
 
-    void grantRoleToUser(String userId);
+    void grantRoleToUserId(String userId, Role role);
+
+    void grantRoleToUsername(String username, Role role);
 
     void updateRating(String userId, int addedAmmount);
 

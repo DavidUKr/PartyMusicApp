@@ -1,5 +1,6 @@
 package com.partymusicapp.Controllers;
 
+import com.partymusicapp.models.Role;
 import com.partymusicapp.models.dto.UserDTO;
 import com.partymusicapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/pma/api/v1/users")
 @RequiredArgsConstructor
+
 public class UserControllerImpl implements UserController{
 
     private final UserService userService;
@@ -32,7 +34,7 @@ public class UserControllerImpl implements UserController{
         return userService.getUserDTOByUsername(username);
     }
 
-    @Override
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -48,8 +50,8 @@ public class UserControllerImpl implements UserController{
     }
 
     @PostMapping(value = "/{userId}/grant")
-    public void grantRoleToUser(@PathVariable String userId) {
-        userService.grantRoleToUser(userId);
+    public void grantRoleToUserId(@PathVariable String userId, @RequestParam Role role) {
+        userService.grantRoleToUserId(userId, role);
     }
 
     @PostMapping(value = "/{userId}/rating")
