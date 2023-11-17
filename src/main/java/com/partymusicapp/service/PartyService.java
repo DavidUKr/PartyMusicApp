@@ -4,6 +4,8 @@ import com.partymusicapp.models.Party;
 import com.partymusicapp.models.dto.PartyDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface PartyService {
 
@@ -18,4 +20,6 @@ public interface PartyService {
     void savePartyTemplate(String userId, PartyDTO partyDTO);
 
     void createParty(PartyDTO partyDTO);
+
+    List<PartyDTO> getAllParties();
 }

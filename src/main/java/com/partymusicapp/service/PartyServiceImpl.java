@@ -11,6 +11,7 @@ import com.partymusicapp.util.PartyUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,6 +56,13 @@ public class PartyServiceImpl implements PartyService{
     public void createParty(PartyDTO partyDTO) {
         partyRepo.save(partyMapper.partyDTOToParty(partyDTO));
         userService.grantRoleToUsername(partyDTO.getOwnerUsername(), Role.PARTY_OWNER);
+    }
+
+    @Override
+    public List<PartyDTO> getAllParties() {
+        return partyRepo.findAll().stream()
+                .map(partyMapper::partyToPartyDTO)
+                .toList();
     }
 
     private Optional<Party> getPartyOptionalById(String partyId) {

@@ -27,7 +27,7 @@ public class PartyControllerImpl implements PartyController{
 
     @Override
     public List<PartyDTO> getAllParties() {
-        return null;
+        return partyService.getAllParties();
     }
 
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
