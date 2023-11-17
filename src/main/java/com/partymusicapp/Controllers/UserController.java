@@ -25,7 +25,7 @@ public interface UserController {
     List<UserDTO> getAllUsers();
 
     @GetMapping(value = "/all/count", produces = MediaType.APPLICATION_JSON_VALUE)
-    int getUserCount();
+    long getUserCount();
 
     @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     void updateUser(@PathVariable String userId, @RequestBody UserDTO userDTO);

@@ -88,8 +88,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int getUserCount() {
-        return userRepo.countAll();
+    public long getUserCount() {
+        return userRepo.count();
     }
 
     private Optional<User> getUserFromUserRepoById(String userId) throws UserNotFoundException{

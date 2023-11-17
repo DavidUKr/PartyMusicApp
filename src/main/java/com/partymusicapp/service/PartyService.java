@@ -22,4 +22,6 @@ public interface PartyService {
     void createParty(PartyDTO partyDTO);
 
     List<PartyDTO> getAllParties();
+
+    long getPartyCount();
 }

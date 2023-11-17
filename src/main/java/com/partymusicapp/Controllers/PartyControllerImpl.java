@@ -30,6 +30,11 @@ public class PartyControllerImpl implements PartyController{
         return partyService.getAllParties();
     }
 
+    @GetMapping(value = "/all/count", produces = MediaType.APPLICATION_JSON_VALUE)
+    public long getPartyCount() {
+        return partyService.getPartyCount();
+    }
+
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO){
         partyService.updateParty(partyId, partyDTO);

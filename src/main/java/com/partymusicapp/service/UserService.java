@@ -29,5 +29,5 @@ public interface UserService {
 
     List<UserDTO> getAllUsers();
 
-    int getUserCount();
+    long getUserCount();
 }

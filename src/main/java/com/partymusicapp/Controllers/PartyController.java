@@ -19,6 +19,9 @@ public interface PartyController {
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     List<PartyDTO> getAllParties();
 
+    @GetMapping(value = "/all/count", produces = MediaType.APPLICATION_JSON_VALUE)
+    long getPartyCount();
+
     @PostMapping(value = "/{partyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     void updateParty(@PathVariable String partyId, @RequestBody PartyDTO partyDTO);
 

@@ -40,7 +40,7 @@ public class UserControllerImpl implements UserController{
     }
 
     @GetMapping(value = "/all/count", produces = MediaType.APPLICATION_JSON_VALUE)
-    public int getUserCount() {
+    public long getUserCount() {
         return userService.getUserCount();
     }
 

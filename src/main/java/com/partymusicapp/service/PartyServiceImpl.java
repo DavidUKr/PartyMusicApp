@@ -65,6 +65,11 @@ public class PartyServiceImpl implements PartyService{
                 .toList();
     }
 
+    @Override
+    public long getPartyCount() {
+        return partyRepo.count();
+    }
+
     private Optional<Party> getPartyOptionalById(String partyId) {
         return Optional.ofNullable(partyRepo.findPartyById(partyId));
     }
