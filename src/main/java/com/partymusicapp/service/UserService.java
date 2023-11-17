@@ -4,6 +4,8 @@ import com.partymusicapp.models.User;
 import com.partymusicapp.models.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface UserService {
 
@@ -20,4 +22,6 @@ public interface UserService {
     void grantRoleToUser(String userId);
 
     void updateRating(String userId, int addedAmmount);
+
+    List<UserDTO> getAllUsers();
 }

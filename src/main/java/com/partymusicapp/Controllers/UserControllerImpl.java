@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/pma/api/v1/users")
 @RequiredArgsConstructor
@@ -28,6 +30,11 @@ public class UserControllerImpl implements UserController{
     @GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO getUserByUsername(@PathVariable String username) {
         return userService.getUserDTOByUsername(username);
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        return userService.getAllUsers();
     }
 
     @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)

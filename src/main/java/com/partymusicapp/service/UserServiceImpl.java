@@ -9,6 +9,8 @@ import com.partymusicapp.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -60,6 +62,13 @@ public class UserServiceImpl implements UserService{
         UserDTO userDTO=new UserDTO();
         userDTO.setRating(getUserById(userId).getRating()+addedAmount);
         updateUser(userId, userDTO);
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        return userRepo.findAll().stream()
+                .map(userMapper::userToUserDTO)
+                .toList();
     }
 
     private Optional<User> getUserFromUserRepoById(String userId) throws UserNotFoundException{
