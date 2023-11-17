@@ -25,6 +25,6 @@ public class PartyDTO {
 
     private String iconURL;
 
-
+    private String title;
 
 }

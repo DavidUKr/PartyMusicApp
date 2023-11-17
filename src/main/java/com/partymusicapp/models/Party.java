@@ -46,5 +46,8 @@ public class Party {
     @JoinColumn
     private Theme themeId;
 
+   @Column
+    private String title;
+
     public Party() {}
 }
