@@ -87,6 +87,11 @@ public class UserServiceImpl implements UserService{
                 .toList();
     }
 
+    @Override
+    public int getUserCount() {
+        return userRepo.countAll();
+    }
+
     private Optional<User> getUserFromUserRepoById(String userId) throws UserNotFoundException{
         return userRepo.findUserById(userId);
     }

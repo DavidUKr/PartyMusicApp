@@ -25,11 +25,9 @@ public class Party {
     @Column
     private String mode;
 
-    @NonNull
     @Column
     private ZonedDateTime startTime;
 
-    @NonNull
     @Column
     private ZonedDateTime endTime;
 

@@ -28,4 +28,6 @@ public interface UserService {
     void updateRating(String userId, int addedAmmount);
 
     List<UserDTO> getAllUsers();
+
+    int getUserCount();
 }

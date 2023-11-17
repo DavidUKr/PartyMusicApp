@@ -39,6 +39,11 @@ public class UserControllerImpl implements UserController{
         return userService.getAllUsers();
     }
 
+    @GetMapping(value = "/all/count", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int getUserCount() {
+        return userService.getUserCount();
+    }
+
     @PostMapping(value = "/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateUser(@PathVariable String userId, UserDTO userDTO) {
         userService.updateUser(userId, userDTO);

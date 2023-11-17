@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PartyRepo extends JpaRepository<Party, String> {
     Party findPartyById(String partyId);
+
+    int countAll();
 }

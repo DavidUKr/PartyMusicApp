@@ -1,7 +1,6 @@
 package com.partymusicapp.models.dto;
 
 import com.partymusicapp.models.Theme;
-import com.partymusicapp.models.User;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
@@ -10,8 +9,6 @@ import java.time.ZonedDateTime;
 public class PartyDTO {
 
     private String id;
-
-    private User ownerId;
 
     private String ownerUsername;
 
