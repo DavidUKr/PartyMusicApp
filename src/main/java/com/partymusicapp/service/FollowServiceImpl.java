@@ -17,7 +17,7 @@ public class FollowServiceImpl implements FollowService{
     private final UserService userService;
 
     @Override
-    public void addFollower(String followerId, String followedId) {
+    public Follow addFollower(String followerId, String followedId) {
         User follower = userService.getUserById(followerId);
         User followed = userService.getUserById(followedId);
 
@@ -27,8 +27,9 @@ public class FollowServiceImpl implements FollowService{
 
         followed.setNoOfFollowers(followed.getNoOfFollowers() + 1);
 
-
         followRepo.save(follow);
+
+        return follow;
     }
 
     @Override

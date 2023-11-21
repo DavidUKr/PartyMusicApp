@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface FollowService {
-    void addFollower(String followerId, String followedId);
+    Follow addFollower(String followerId, String followedId);
 
     void deleteFollower(String followerId);
 

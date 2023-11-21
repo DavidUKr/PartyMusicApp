@@ -12,11 +12,11 @@ import java.util.List;
 public interface FollowController {
 
     @PostMapping(value = "/addFollower", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Follow addFollower(@PathVariable String followedId, @PathVariable String followerId);
+    Follow addFollower(@RequestBody String followedId, @RequestBody String followerId);
 
 
-    @DeleteMapping(value ="/removeFollower/{followerId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> removeFollower(@PathVariable String followerId);
+    @DeleteMapping(value ="/removeFollower/{followerId}")
+    void removeFollower(@PathVariable String followerId);
 
 
     @GetMapping(value = "/showFollowers/{userId}")
