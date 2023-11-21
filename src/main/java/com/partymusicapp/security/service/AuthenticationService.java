@@ -3,6 +3,7 @@ package com.partymusicapp.security.service;
 import com.partymusicapp.advice.exception.UserNotFoundException;
 import com.partymusicapp.models.Role;
 import com.partymusicapp.models.User;
+import com.partymusicapp.service.UserServiceImpl;
 import com.partymusicapp.repository.UserRepo;
 import com.partymusicapp.security.model.AuthenticationRequest;
 import com.partymusicapp.security.model.AuthenticationResponse;
@@ -48,9 +49,14 @@ public class AuthenticationService {
         var user= userRepo.findUserByUsername(authenticationRequest.getUsername())
                 .orElseThrow(()-> new UserNotFoundException("User "+authenticationRequest.getUsername()+" not found"));
 
+
         var jwtToken=jwtService.generateToken(user);
+
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
     }
+
+
 }

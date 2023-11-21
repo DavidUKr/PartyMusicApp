@@ -56,6 +56,11 @@ public class User implements UserDetails {
     private int noOfHostedParties;
 
     @Column
+    private int noOfFollowers;
+
+
+
+    @Column
     @Enumerated(EnumType.STRING)
     private Role role;
 

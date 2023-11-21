@@ -1,6 +1,7 @@
 package com.partymusicapp.service;
 
 import com.partymusicapp.models.Follow;
+import com.partymusicapp.models.User;
 import com.partymusicapp.repository.FollowRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,17 @@ public class FollowServiceImpl implements FollowService{
 
     @Override
     public void addFollower(String followerId, String followedId) {
+        User follower = userService.getUserById(followerId);
+        User followed = userService.getUserById(followedId);
 
-        followRepo.save()
+        Follow follow = new Follow();
+        follow.setFollowerID(follower.getId());
+        follow.setFollowedID(followed.getId());
+
+        followed.setNoOfFollowers(followed.getNoOfFollowers() + 1);
+
+
+        followRepo.save(follow);
     }
 
     @Override
