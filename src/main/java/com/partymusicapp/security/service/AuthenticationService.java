@@ -3,7 +3,6 @@ package com.partymusicapp.security.service;
 import com.partymusicapp.advice.exception.UserNotFoundException;
 import com.partymusicapp.models.Role;
 import com.partymusicapp.models.User;
-import com.partymusicapp.service.UserServiceImpl;
 import com.partymusicapp.repository.UserRepo;
 import com.partymusicapp.security.model.AuthenticationRequest;
 import com.partymusicapp.security.model.AuthenticationResponse;
