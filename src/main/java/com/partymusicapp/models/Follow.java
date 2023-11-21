@@ -20,6 +20,9 @@ public class Follow {
     @JoinColumn
     private Follow followedID;
 
+    @Column
+    private int noOfFollowers;
+
     public Follow(){}
 
 }
