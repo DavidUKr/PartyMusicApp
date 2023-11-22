@@ -1,6 +1,7 @@
 package com.partymusicapp.Controllers;
 
 import com.partymusicapp.models.Follow;
+import com.partymusicapp.models.User;
 import com.partymusicapp.service.FollowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -16,13 +17,13 @@ public class FollowControllerImpl implements FollowController{
     private final FollowService followService;
 
     @PostMapping(value = "/addFollower", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Follow addFollower(@RequestBody String followedId, @RequestBody String followerId) {
+    public Follow addFollower(@RequestBody User followedId, @RequestBody User followerId) {
         return followService.addFollower(followerId, followedId);
     }
 
 
     @DeleteMapping(value ="/removeFollower/{followerId}")
-    public void removeFollower(String followerId) {
+    public void removeFollower(User followerId) {
         followService.deleteFollower(followerId);
     }
 

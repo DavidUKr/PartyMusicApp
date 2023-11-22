@@ -14,11 +14,11 @@ public class Follow {
 
     @ManyToOne
     @JoinColumn
-    private String followerID;
+    private User followerID;
 
     @ManyToOne
     @JoinColumn
-    private String followedID;
+    private User followedID;
 
     @Column
     private int noOfFollowers;
