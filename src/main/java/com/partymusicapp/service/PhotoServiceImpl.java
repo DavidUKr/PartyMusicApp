@@ -12,18 +12,22 @@ import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-public class PhotoServiceImpl {
+public class PhotoServiceImpl implements PhotoService{
 
     PhotoRepo photoRepo;
     UserService userService;
 
     @Transactional
-    public Photo saveFile(MultipartFile file, User userId) throws IOException{
-        //User user = userService.getUserById(userId);
-
+    public Photo savePhoto(MultipartFile file, String userId) throws IOException {
+        User user = userService.getUserById(userId);
 
         Photo photo = new Photo();
-        photo.setUserId(userId);
+        photo.setUserId(user);
+        photo.setFilename(file.getOriginalFilename());
+        photo.setFileType(file.getContentType());
+        photo.setData(file.getBytes());
+
+        photoRepo.save(photo);
 
         return photo;
     }
