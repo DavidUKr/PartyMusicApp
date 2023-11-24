@@ -1,26 +1,27 @@
 package com.partymusicapp.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "Follow")
-@NoArgsConstructor
-@AllArgsConstructor
-public class Follow {
-
+@Table(name = "Photo")
+public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private User follower;
+    private User userId;
 
-    @ManyToOne
-    @JoinColumn
-    private User followed;
+    @Column
+    private String filename;
+
+    @Column
+    private String fileType;
+
+    @Column
+    @Lob
+    private byte[] data;
 }
