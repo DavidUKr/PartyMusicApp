@@ -6,13 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pma/api/v1/upload")
@@ -31,4 +29,35 @@ public class PhotoControllerImpl implements PhotoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @Override
+    @DeleteMapping("/delete/{photoId}")
+    public ResponseEntity<String> deletePhoto(String photoId) {
+        photoService.deletePhoto(photoId);
+        return ResponseEntity.ok("Photo deleted successfully");
+    }
+
+    @Override
+    @GetMapping("/get/{photoId}")
+    public ResponseEntity<Photo> getPhoto(String photoId) {
+        return photoService.getPhoto(photoId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @Override
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Photo>> getAllPhotos() {
+        List<Photo> photos = photoService.getAllPhotos();
+        return ResponseEntity.ok(photos);
+    }
+
+    @Override
+    @GetMapping("/getUserPhotos/{userId}")
+    public ResponseEntity<List<Photo>> getUserPhotos(String userId) {
+        List<Photo> userPhotos = photoService.getUserPhotos(userId);
+        return ResponseEntity.ok(userPhotos);
+    }
+
+
 }

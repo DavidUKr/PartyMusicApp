@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +32,27 @@ public class PhotoServiceImpl implements PhotoService{
         photoRepo.save(photo);
 
         return photo;
+    }
+
+    @Transactional
+    public void deletePhoto(String photoId) {
+        Photo photo = photoRepo.findPhotoByPhotoId(photoId);
+        if(photo != null)
+            photoRepo.delete(photo);
+    }
+
+    public Optional<Photo> getPhoto(String photoId) {
+        return photoRepo.findById(photoId);
+    }
+
+    public List<Photo> getAllPhotos() {
+        return photoRepo.findAll().stream()
+                .toList();
+    }
+
+    public List<Photo> getUserPhotos(String userId) {
+        User user = userService.getUserById(userId);
+        return photoRepo.findByUser(user);
     }
 
 }
