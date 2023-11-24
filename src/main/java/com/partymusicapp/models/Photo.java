@@ -11,7 +11,8 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User userId;
 
     @Column
