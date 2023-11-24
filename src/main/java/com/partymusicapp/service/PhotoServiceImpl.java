@@ -36,7 +36,7 @@ public class PhotoServiceImpl implements PhotoService{
 
     @Transactional
     public void deletePhoto(String photoId) {
-        Photo photo = photoRepo.findPhotoByPhotoId(photoId);
+        Photo photo = photoRepo.findPhotoById(photoId);
         if(photo != null)
             photoRepo.delete(photo);
     }
@@ -52,7 +52,7 @@ public class PhotoServiceImpl implements PhotoService{
 
     public List<Photo> getUserPhotos(String userId) {
         User user = userService.getUserById(userId);
-        return photoRepo.findByUser(user);
+        return photoRepo.findAllByUserId(user);
     }
 
 }

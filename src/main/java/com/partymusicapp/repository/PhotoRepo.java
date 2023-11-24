@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PhotoRepo extends JpaRepository<Photo, String> {
-    Photo findPhotoByPhotoId(String photoId);
+    Photo findPhotoById(String photoId);
 
-    List<Photo> findByUser(User userId);
+    List<Photo> findAllByUserId(User userId);
 }
+
