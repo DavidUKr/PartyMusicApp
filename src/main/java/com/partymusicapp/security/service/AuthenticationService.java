@@ -48,9 +48,14 @@ public class AuthenticationService {
         var user= userRepo.findUserByUsername(authenticationRequest.getUsername())
                 .orElseThrow(()-> new UserNotFoundException("User "+authenticationRequest.getUsername()+" not found"));
 
+
         var jwtToken=jwtService.generateToken(user);
+
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
     }
+
+
 }

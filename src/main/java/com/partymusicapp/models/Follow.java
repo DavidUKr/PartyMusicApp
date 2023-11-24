@@ -1,11 +1,15 @@
 package com.partymusicapp.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "Follow")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Follow {
 
     @Id
@@ -14,12 +18,9 @@ public class Follow {
 
     @ManyToOne
     @JoinColumn
-    private Follow followerID;
+    private User follower;
 
     @ManyToOne
     @JoinColumn
-    private Follow followedID;
-
-    public Follow(){}
-
+    private User followed;
 }
