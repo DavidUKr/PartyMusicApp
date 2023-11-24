@@ -15,19 +15,19 @@ public class FollowControllerImpl implements FollowController{
 
     private final FollowService followService;
 
-    @PostMapping(value = "/addFollower", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Follow addFollower(@RequestBody String followedId, @RequestBody String followerId) {
-        return followService.addFollower(followerId, followedId);
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Follow addFollow(@RequestParam String followerUsername, @RequestParam String followedUsername) {
+        return followService.addFollow(followerUsername, followedUsername);
     }
 
 
-    @DeleteMapping(value ="/removeFollower/{followerId}")
-    public void removeFollower(String followerId) {
-        followService.deleteFollower(followerId);
+    @DeleteMapping(value ="/remove")
+    public void removeFollow(@RequestParam String followerUsername, @RequestParam String followedUsername) {
+        followService.deleteFollow(followerUsername, followedUsername);
     }
 
     @Override
-    public List<Follow> getAllFollowers(String userId) {
-        return followService.getAllFollowers();
+    public List<Follow> getAllFollowersOfUsername(String username) {
+        return followService.getAllFollowersOfUsername(username);
     }
 }

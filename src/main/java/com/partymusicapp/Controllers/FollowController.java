@@ -10,15 +10,15 @@ import java.util.List;
 @RequestMapping(value = "/pma/api/v1/follow")
 public interface FollowController {
 
-    @PostMapping(value = "/addFollower", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Follow addFollower(@RequestBody String followedId, @RequestBody String followerId);
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    Follow addFollow(@RequestParam String followerUsername, @RequestParam String followedUsername);
 
 
-    @DeleteMapping(value ="/removeFollower/{followerId}")
-    void removeFollower(@PathVariable String followerId);
+    @DeleteMapping(value ="/remove")
+    void removeFollow(@RequestParam String followerUsername, @RequestParam String followedUsername);
 
 
-    @GetMapping(value = "/showFollowers/{userId}")
-    List<Follow> getAllFollowers(@PathVariable String userId);
+    @GetMapping(value = "/showFollowers/{username}")
+    List<Follow> getAllFollowersOfUsername(@PathVariable String username);
 
 }
