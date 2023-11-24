@@ -1,5 +1,6 @@
 package com.partymusicapp.service;
 
+import com.partymusicapp.advice.exception.FollowNotFoundException;
 import com.partymusicapp.models.Follow;
 import com.partymusicapp.models.User;
 import com.partymusicapp.repository.FollowRepo;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -32,15 +34,21 @@ public class FollowServiceImpl implements FollowService{
     }
 
     @Override
-    public void deleteFollower(User followerId) {
-        Follow follower = followRepo.findFollowByFollower(followerId);
-        if(follower != null)
-            followRepo.delete(follower);
+    public void deleteFollow(String followerUsername, String followedUsername) {
+        followRepo.delete(getFollowByFollowerAndFollowedUsername(followerUsername, followedUsername));
     }
 
     @Override
-    public List<Follow> getAllFollowers() {
+    public List<Follow> getAllFollowersOfUsername(String username) {
         return followRepo.findAll().stream()
+                .filter(follow -> follow.getFollowed().getUsername().equals(username))
                 .toList();
+    }
+
+    @Override
+    public Follow getFollowByFollowerAndFollowedUsername(String followerUsername, String followedUsername) {
+        Optional<Follow> optionalFollow = followRepo.findFollowByFollowerAndFollowed(userService.getUserByUsername(followerUsername), userService.getUserByUsername(followedUsername));
+
+        return optionalFollow.orElseThrow(()->new FollowNotFoundException("Follow by "+followerUsername+" to "+followedUsername+" not found"));
     }
 }

@@ -2,7 +2,6 @@ package com.partymusicapp.service;
 
 
 import com.partymusicapp.models.Follow;
-import com.partymusicapp.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +10,10 @@ import java.util.List;
 public interface FollowService {
     Follow addFollow(String followerUsername, String followedUsername);
 
-    void deleteFollower(User followerId);
+    void deleteFollow(String followerUsername, String followedUsername);
 
-    List<Follow> getAllFollowers();
+    List<Follow> getAllFollowersOfUsername(String Username);
+
+    Follow getFollowByFollowerAndFollowedUsername(String followerUsername, String followedUsername);
+
 }
