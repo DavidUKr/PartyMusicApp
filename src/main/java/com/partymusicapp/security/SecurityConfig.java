@@ -45,7 +45,6 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(corsFilter(), CorsFilter.class);
 
-
         return http.build();
     }
 
@@ -59,7 +58,4 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
-
-
-
 }

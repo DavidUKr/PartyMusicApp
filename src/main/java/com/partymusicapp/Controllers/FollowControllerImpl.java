@@ -17,8 +17,8 @@ public class FollowControllerImpl implements FollowController{
     private final FollowService followService;
 
     @PostMapping(value = "/addFollower", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Follow addFollower(@RequestBody User followedId, @RequestBody User followerId) {
-        return followService.addFollower(followerId, followedId);
+    public Follow addFollow(@RequestParam String followerUsername, @RequestParam String followedUsername) {
+        return followService.addFollow(followerUsername, followedUsername);
     }
 
 

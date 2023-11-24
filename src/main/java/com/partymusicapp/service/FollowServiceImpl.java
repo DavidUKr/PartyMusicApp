@@ -14,16 +14,17 @@ import java.util.List;
 public class FollowServiceImpl implements FollowService{
 
     private final FollowRepo followRepo;
+    private final UserService userService;
 
     @Override
-    public Follow addFollower(User followerId, User followedId) {
-
-
+    public Follow addFollow(String followerUsername, String followedUsername) {
         Follow follow = new Follow();
-        follow.setFollowerID(followerId);
-        follow.setFollowedID(followedId);
+        User followed=userService.getUserByUsername(followedUsername);
+        follow.setFollower(userService.getUserByUsername(followerUsername));
+        follow.setFollowed(followed);
 
-        followedId.setNoOfFollowers(followedId.getNoOfFollowers() + 1);
+        followed.setNoOfFollowers(followed.getNoOfFollowers()+1);
+        userService.updateUser(followed);
 
         followRepo.save(follow);
 
@@ -32,7 +33,7 @@ public class FollowServiceImpl implements FollowService{
 
     @Override
     public void deleteFollower(User followerId) {
-        Follow follower = followRepo.findFollowerByFollowerId(followerId);
+        Follow follower = followRepo.findFollowByFollower(followerId);
         if(follower != null)
             followRepo.delete(follower);
     }
